@@ -2,8 +2,8 @@ const subjectInput = document.getElementById('subjectInput');
 const learnerLevel = document.getElementById('learnerLevel');
 const recommendBtn = document.getElementById('recommendBtn');
 
-const emptyState = document.getElementById('emptyState');
-const loadingOverlay = document.getElementById('loadingOverlay');
+const emptyState = document.getElementById('recommendEmptyState');
+const loadingOverlay = document.getElementById('recommendLoadingOverlay');
 const recommendationsOutput = document.getElementById('recommendationsOutput');
 
 const outSubject = document.getElementById('outSubject');

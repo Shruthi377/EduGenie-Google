@@ -191,31 +191,31 @@ async def read_home(request: Request):
 
 @app.get("/chat", response_class=HTMLResponse)
 async def read_chat(request: Request):
-    return templates.TemplateResponse(request=request, name="chat.html", context=get_base_context(request))
+    return templates.TemplateResponse(request=request, name="index.html", context=get_base_context(request))
 
 @app.get("/quiz", response_class=HTMLResponse)
 async def read_quiz(request: Request):
-    return templates.TemplateResponse(request=request, name="quiz.html", context=get_base_context(request))
+    return templates.TemplateResponse(request=request, name="index.html", context=get_base_context(request))
 
 @app.get("/summary", response_class=HTMLResponse)
 async def read_summary(request: Request):
-    return templates.TemplateResponse(request=request, name="summary.html", context=get_base_context(request))
+    return templates.TemplateResponse(request=request, name="index.html", context=get_base_context(request))
 
 @app.get("/explain", response_class=HTMLResponse)
 async def read_explain(request: Request):
-    return templates.TemplateResponse(request=request, name="explain.html", context=get_base_context(request))
+    return templates.TemplateResponse(request=request, name="index.html", context=get_base_context(request))
 
 @app.get("/recommend", response_class=HTMLResponse)
 async def read_recommend(request: Request):
-    return templates.TemplateResponse(request=request, name="recommend.html", context=get_base_context(request))
+    return templates.TemplateResponse(request=request, name="index.html", context=get_base_context(request))
 
 @app.get("/about", response_class=HTMLResponse)
 async def read_about(request: Request):
-    return templates.TemplateResponse(request=request, name="about.html", context=get_base_context(request))
+    return templates.TemplateResponse(request=request, name="index.html", context=get_base_context(request))
 
 @app.get("/contact", response_class=HTMLResponse)
 async def read_contact(request: Request):
-    return templates.TemplateResponse(request=request, name="contact.html", context=get_base_context(request))
+    return templates.TemplateResponse(request=request, name="index.html", context=get_base_context(request))
 
 # Startup event to warm up local model lazily
 @app.on_event("startup")

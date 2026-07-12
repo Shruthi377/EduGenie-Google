@@ -1,11 +1,11 @@
 const quizSetupScreen = document.getElementById('quizSetupScreen');
 const quizPlayScreen = document.getElementById('quizPlayScreen');
 const quizResultScreen = document.getElementById('quizResultScreen');
-const loadingOverlay = document.getElementById('loadingOverlay');
+const loadingOverlay = document.getElementById('quizLoadingOverlay');
 
 const quizTopicInput = document.getElementById('quizTopicInput');
 const generateQuizBtn = document.getElementById('generateQuizBtn');
-const useLocalT5 = document.getElementById('useLocalT5');
+const useLocalT5 = document.getElementById('quizUseLocalT5');
 const numQuestions = document.getElementById('numQuestions');
 
 const quizPlayTopic = document.getElementById('quizPlayTopic');

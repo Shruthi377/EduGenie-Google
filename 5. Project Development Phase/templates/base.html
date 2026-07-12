@@ -34,14 +34,14 @@
             </a>
             
             <ul class="nav-links">
-                <li><a href="/" class="nav-link {% if request.url.path == '/' %}active{% endif %}">Home</a></li>
-                <li><a href="/chat" class="nav-link {% if request.url.path == '/chat' %}active{% endif %}"><i class="fas fa-message"></i> Chat</a></li>
-                <li><a href="/quiz" class="nav-link {% if request.url.path == '/quiz' %}active{% endif %}"><i class="fas fa-clipboard-question"></i> Quiz</a></li>
-                <li><a href="/explain" class="nav-link {% if request.url.path == '/explain' %}active{% endif %}"><i class="fas fa-lightbulb"></i> Explainer</a></li>
-                <li><a href="/summary" class="nav-link {% if request.url.path == '/summary' %}active{% endif %}"><i class="fas fa-file-invoice"></i> Summarizer</a></li>
-                <li><a href="/recommend" class="nav-link {% if request.url.path == '/recommend' %}active{% endif %}"><i class="fas fa-route"></i> Roadmaps</a></li>
-                <li><a href="/about" class="nav-link {% if request.url.path == '/about' %}active{% endif %}">About</a></li>
-                <li><a href="/contact" class="nav-link {% if request.url.path == '/contact' %}active{% endif %}">Contact</a></li>
+                <li><a href="/" class="nav-link nav-home"><i class="fas fa-house"></i> Home</a></li>
+                <li><a href="/chat" class="nav-link nav-chat"><i class="fas fa-message"></i> Chat</a></li>
+                <li><a href="/quiz" class="nav-link nav-quiz"><i class="fas fa-clipboard-question"></i> Quiz</a></li>
+                <li><a href="/explain" class="nav-link nav-explain"><i class="fas fa-lightbulb"></i> Explainer</a></li>
+                <li><a href="/summary" class="nav-link nav-summary"><i class="fas fa-file-invoice"></i> Summarizer</a></li>
+                <li><a href="/recommend" class="nav-link nav-recommend"><i class="fas fa-route"></i> Roadmaps</a></li>
+                <li><a href="/about" class="nav-link nav-about">About</a></li>
+                <li><a href="/contact" class="nav-link nav-contact">Contact</a></li>
             </ul>
 
             <div class="controls-container">
@@ -72,6 +72,73 @@
 
     <!-- Global Main JS -->
     <script src="/static/js/main.js"></script>
+    <script>
+        // SPA Client-side Router
+        function navigateSPA(path) {
+            window.history.pushState(null, "", path);
+            renderSPARoute(path);
+        }
+
+        function renderSPARoute(path) {
+            const sectionMap = {
+                "/": "home-section",
+                "/chat": "chat-section",
+                "/quiz": "quiz-section",
+                "/explain": "explain-section",
+                "/summary": "summary-section",
+                "/recommend": "recommend-section",
+                "/about": "about-section",
+                "/contact": "contact-section"
+            };
+
+            const targetSectionId = sectionMap[path] || "home-section";
+
+            // Hide all sections and show the target one
+            const sections = document.querySelectorAll(".spa-section");
+            sections.forEach(section => {
+                if (section.id === targetSectionId) {
+                    section.style.display = "block";
+                    section.classList.add("spa-fade-in");
+                } else {
+                    section.style.display = "none";
+                    section.classList.remove("spa-fade-in");
+                }
+            });
+
+            // Update active states on nav links
+            const navLinks = document.querySelectorAll(".nav-link");
+            navLinks.forEach(link => {
+                const href = link.getAttribute("href");
+                if (href === path) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Intercept internal relative links
+            document.body.addEventListener("click", (e) => {
+                const link = e.target.closest("a");
+                if (link && link.getAttribute("href")) {
+                    const href = link.getAttribute("href");
+                    if (href.startsWith("/")) {
+                        e.preventDefault();
+                        navigateSPA(href);
+                    }
+                }
+            });
+
+            // Handle browser navigation back/forward
+            window.addEventListener("popstate", () => {
+                renderSPARoute(window.location.pathname);
+            });
+
+            // Execute initial route match
+            renderSPARoute(window.location.pathname);
+        });
+    </script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

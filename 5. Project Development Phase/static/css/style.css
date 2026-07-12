@@ -893,3 +893,18 @@ footer {
         padding: 0.4rem 0.6rem;
     }
 }
+
+.spa-fade-in {
+    animation: spaFadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes spaFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -2,8 +2,8 @@ const conceptInput = document.getElementById('conceptInput');
 const complexityLevel = document.getElementById('complexityLevel');
 const explainBtn = document.getElementById('explainBtn');
 const explainerOutput = document.getElementById('explainerOutput');
-const emptyState = document.getElementById('emptyState');
-const loadingOverlay = document.getElementById('loadingOverlay');
+const emptyState = document.getElementById('explainEmptyState');
+const loadingOverlay = document.getElementById('explainLoadingOverlay');
 
 const outConcept = document.getElementById('outConcept');
 const outBadge = document.getElementById('outBadge');

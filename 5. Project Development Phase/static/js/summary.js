@@ -1,11 +1,11 @@
 const textToSummarize = document.getElementById('textToSummarize');
 const summaryLength = document.getElementById('summaryLength');
 const summaryFormat = document.getElementById('summaryFormat');
-const useLocalT5 = document.getElementById('useLocalT5');
+const useLocalT5 = document.getElementById('summaryUseLocalT5');
 const summarizeBtn = document.getElementById('summarizeBtn');
 
-const emptyState = document.getElementById('emptyState');
-const loadingOverlay = document.getElementById('loadingOverlay');
+const emptyState = document.getElementById('summaryEmptyState');
+const loadingOverlay = document.getElementById('summaryLoadingOverlay');
 const summarizerOutput = document.getElementById('summarizerOutput');
 
 const outSummary = document.getElementById('outSummary');
