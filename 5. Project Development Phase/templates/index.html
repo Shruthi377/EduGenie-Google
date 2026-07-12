@@ -5,6 +5,16 @@
 {% block content %}
 <div id="spa-container">
 
+    <!-- Workspace Tab Dashboard -->
+    <div class="dashboard-tabs glass-panel" style="padding: 0.75rem; margin-bottom: 2rem; display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; border-radius: var(--radius-md);">
+        <button class="tab-btn btn-tab-overview" data-href="/" onclick="navigateSPA('/')"><i class="fas fa-grip"></i> Overview</button>
+        <button class="tab-btn btn-tab-chat" data-href="/chat" onclick="navigateSPA('/chat')"><i class="fas fa-message"></i> AI Chat</button>
+        <button class="tab-btn btn-tab-quiz" data-href="/quiz" onclick="navigateSPA('/quiz')"><i class="fas fa-clipboard-question"></i> AI Quiz</button>
+        <button class="tab-btn btn-tab-explain" data-href="/explain" onclick="navigateSPA('/explain')"><i class="fas fa-lightbulb"></i> Explainer</button>
+        <button class="tab-btn btn-tab-summary" data-href="/summary" onclick="navigateSPA('/summary')"><i class="fas fa-file-invoice"></i> Summarizer</button>
+        <button class="tab-btn btn-tab-recommend" data-href="/recommend" onclick="navigateSPA('/recommend')"><i class="fas fa-route"></i> Roadmaps</button>
+    </div>
+
     <!-- 0. Home Section -->
     <div id="home-section" class="spa-section">
         <div style="text-align: center; margin-bottom: 3rem; animation: fadeIn 1s ease-out;">
@@ -901,6 +911,63 @@ function handleFormSubmission(event) {
 .badge-book { background-color: rgba(59, 130, 246, 0.1); color: #2563eb; }
 .badge-course { background-color: rgba(16, 185, 129, 0.1); color: #059669; }
 .badge-practice { background-color: rgba(245, 158, 11, 0.1); color: #d97706; }
+
+.tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+.tab-btn:hover {
+    color: var(--text-main);
+    background-color: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.tab-btn.active.btn-tab-overview {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+}
+.tab-btn.active.btn-tab-chat {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-color: #3b82f6;
+    color: white;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+}
+.tab-btn.active.btn-tab-quiz {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    border-color: #f59e0b;
+    color: white;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+}
+.tab-btn.active.btn-tab-explain {
+    background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+    border-color: #a78bfa;
+    color: white;
+    box-shadow: 0 4px 14px rgba(167, 139, 250, 0.4);
+}
+.tab-btn.active.btn-tab-summary {
+    background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+    border-color: #ec4899;
+    color: white;
+    box-shadow: 0 4px 14px rgba(236, 72, 153, 0.4);
+}
+.tab-btn.active.btn-tab-recommend {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-color: #10b981;
+    color: white;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+}
 </style>
 {% endblock %}
 

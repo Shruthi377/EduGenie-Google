@@ -35,11 +35,6 @@
             
             <ul class="nav-links">
                 <li><a href="/" class="nav-link nav-home"><i class="fas fa-house"></i> Home</a></li>
-                <li><a href="/chat" class="nav-link nav-chat"><i class="fas fa-message"></i> Chat</a></li>
-                <li><a href="/quiz" class="nav-link nav-quiz"><i class="fas fa-clipboard-question"></i> Quiz</a></li>
-                <li><a href="/explain" class="nav-link nav-explain"><i class="fas fa-lightbulb"></i> Explainer</a></li>
-                <li><a href="/summary" class="nav-link nav-summary"><i class="fas fa-file-invoice"></i> Summarizer</a></li>
-                <li><a href="/recommend" class="nav-link nav-recommend"><i class="fas fa-route"></i> Roadmaps</a></li>
                 <li><a href="/about" class="nav-link nav-about">About</a></li>
                 <li><a href="/contact" class="nav-link nav-contact">Contact</a></li>
             </ul>
@@ -105,11 +100,24 @@
                 }
             });
 
+            // Update active states on dashboard tab buttons
+            const tabButtons = document.querySelectorAll(".tab-btn");
+            tabButtons.forEach(btn => {
+                const href = btn.getAttribute("data-href");
+                if (href === path) {
+                    btn.classList.add("active");
+                } else {
+                    btn.classList.remove("active");
+                }
+            });
+
             // Update active states on nav links
             const navLinks = document.querySelectorAll(".nav-link");
             navLinks.forEach(link => {
                 const href = link.getAttribute("href");
-                if (href === path) {
+                const isHomePath = href === "/";
+                const isToolPath = ["/chat", "/quiz", "/explain", "/summary", "/recommend"].includes(path);
+                if (href === path || (isHomePath && isToolPath)) {
                     link.classList.add("active");
                 } else {
                     link.classList.remove("active");
